@@ -1,16 +1,17 @@
 <template>
-    <button type="button">Connect wallet</button>
+    <button>{{ text }}</button>
 </template>
 
 <script lang="ts">
 
 export default {
-
+props: ['text']
 }
 </script>
 
 <style>
 button {
+    margin: 0 !important;
     border: 1.5px solid #5C5C5C;
     text-align: center;
     background-color: transparent;
@@ -18,7 +19,7 @@ button {
     padding-right: 20px;
     padding-left: 20px;
     border-radius: 25px;
-    height: 5vh;
+    height: 4.5vh;
     color: white;
     font-weight: 600;
     font-size: 100%;
@@ -27,6 +28,7 @@ button {
 
 button:hover {
     border: 1.5px solid white;
+    transition: all .25s;
 }
 
 button:active {
