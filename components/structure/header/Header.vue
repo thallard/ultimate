@@ -1,10 +1,15 @@
 <template>
     <nav id="navbar">
-        <div id="content-container">
-            <div id="test">Organizations</div>
-            
-            <LoginButton class="right"/>
+        <a id="burger-button">
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </a>
+        <div>
+            <ul id="navbar-links">
+                <li>Organizations</li>
+            </ul>
         </div>
+        <LoginButton id="login-button"/>      
     </nav>
 </template>
 
@@ -13,49 +18,66 @@ import Button from '../../UI/Button.vue'
 import LoginButton from './LoginButton.vue'
 
 export default {
-  components: { Button, LoginButton },
-  data: function () {
-      return {
-          account: null,
-      }
-  },
-  methods: {
-    connectWallet: async function () {
-        // Connect to Metamask
-        this.account = await (window as any).ethereum.request({method: 'eth_requestAccounts' }).catch((e: Error) => {
-            console.error(e.message);
-            return ;
-        });
-
-        // Remove login button and set profile image
-        (document as any).getElementById("connection-button").style.display = "none";
-        (document as any).getElementById("login").style.display = "block";
-    }
-  },
+    components: { Button, LoginButton },
+    mounted() {
+        (document as any).getElementById('login-button').style.paddingRight = "0.5%";
+    },
 }
 </script>
 
 <style>
 #navbar {
     height: 6vh;
-    border-bottom: 2px solid #2C2C2C;
-}
-
-#content-container {
-    margin-top: 1vh;
+    background-color: #0c0c0c;
+    /* border-bottom: 2px solid #2C2C2C; */
+    font-size: 1rem !important;
+    justify-content: space-between;
+    align-items: center;
     display: flex;
-    flex-direction: row;
 }
 
-#content-container div {
-    margin-left: 1%;
-    margin-top: 1.5vh;
-    margin-right: 1%;
+#navbar-links {
+    display: flex;
 }
 
-.right {
-    margin-left: 83.5%;
+#navbar-links li {
+    margin: 0 10px 0 10px;
 }
+
+#login-button {
+    padding-right: 0.5%;
+}
+
+#burger-button  {
+    position: absolute;
+    top: 1.25rem;
+    left: 1rem;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 16px;
+}
+
+#burger-button .bar {
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+@media (max-width: 500px) {
+    #burger-button {
+        display: flex;
+    }
+
+    #navbar-links {
+        display: none;
+    }
+
+
+}
+
 
 
 </style>

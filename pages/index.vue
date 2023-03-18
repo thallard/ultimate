@@ -19,9 +19,18 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@600&display=swap');
 
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  list-style: none;
+}
+
 html, body, #__nuxt, #__layout{
   height:100% !important;
   margin: 0 !important;
+  padding: 0 !important;
   background: #1C1C1C;
   color: white;
   font-family: 'Noto Sans', sans-serif;
